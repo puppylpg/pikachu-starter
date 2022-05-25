@@ -3,6 +3,7 @@ package io.puppylpg.pokemon.pikachu.entity;
 import lombok.Data;
 import lombok.Setter;
 import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,8 +35,9 @@ public class Pikachu implements Pokemon {
 
         ClassLoader classLoader = getClass().getClassLoader();
 //        File file = new File(classLoader.getResource("pikachu.pic").getFile());
-        InputStream inputStream = classLoader.getResourceAsStream("pikachu.pic");
-        try {
+//        InputStream inputStream = classLoader.getResourceAsStream("pikachu.pic");
+        ClassPathResource classPathResource = new ClassPathResource("pikachu.pic");
+        try (InputStream inputStream = classPathResource.getInputStream()) {
             pic = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,7 +47,7 @@ public class Pikachu implements Pokemon {
         if (girlFriend != null) {
             girl = String.format("%nI have a girl friend. Her name is %s, and she likes %s.", girlFriend.name, girlFriend.interest);
         } else {
-            girl = "\nAnd I'm happy to be a bachelor.";
+            girl = "\nAnd I have no girlfriend...";
         }
 
         return String.format("Hello, I am a pikachu. %nMy name is %s, %dcm. %s %nHere is my picture:%n%s", name, height, girl, pic);

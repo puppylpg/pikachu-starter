@@ -1,6 +1,5 @@
 package io.puppylpg.pokemon.pikachu;
 
-import io.puppylpg.pokemon.pikachu.entity.Pikachu;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -14,5 +13,11 @@ public class PikachuProperties {
 
     private int height;
 
-    private Pikachu.GirlFriend girlFriend;
+    private Girl girlFriend;
+
+    @Data
+    public static class Girl {
+        private String name;
+        private String interest;
+    }
 }
