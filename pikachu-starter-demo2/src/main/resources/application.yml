@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+pokemon:
+  pikachu:
+    name: pika
+    height: 63
+    girl-friend:
+      name: qiqi
+      interest: hiking
+

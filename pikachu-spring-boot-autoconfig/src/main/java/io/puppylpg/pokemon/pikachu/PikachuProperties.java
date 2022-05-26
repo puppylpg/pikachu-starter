@@ -17,6 +17,9 @@ public class PikachuProperties {
 
     @Data
     public static class Girl {
+        /**
+         * 这个是女朋友的名字啦（属性配置的时候可以看到注释）
+         */
         private String name;
         private String interest;
     }

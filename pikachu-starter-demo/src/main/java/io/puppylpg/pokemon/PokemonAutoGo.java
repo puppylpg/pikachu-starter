@@ -5,8 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PokemonGo {
+public class PokemonAutoGo {
     public static void main(String[] args) {
-        SpringApplication.run(PokemonGo.class, args);
+        SpringApplication.run(PokemonAutoGo.class, args);
     }
 }

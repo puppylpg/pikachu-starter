@@ -3,7 +3,6 @@ package io.puppylpg.pokemon.pikachu.entity;
 import lombok.Data;
 import lombok.Setter;
 import org.apache.commons.io.IOUtils;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,9 +34,9 @@ public class Pikachu implements Pokemon {
 
         ClassLoader classLoader = getClass().getClassLoader();
 //        File file = new File(classLoader.getResource("pikachu.pic").getFile());
-//        InputStream inputStream = classLoader.getResourceAsStream("pikachu.pic");
-        ClassPathResource classPathResource = new ClassPathResource("pikachu.pic");
-        try (InputStream inputStream = classPathResource.getInputStream()) {
+        InputStream inputStream = classLoader.getResourceAsStream("pikachu.pic");
+//        ClassPathResource classPathResource = new ClassPathResource("pikachu.pic");
+        try {
             pic = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
