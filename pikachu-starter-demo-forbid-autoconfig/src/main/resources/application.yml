@@ -6,6 +6,6 @@ pokemon:
     name: pika
     height: 63
     girlfriend:
-      name: bibi
       interest: hiking
+      name: forbid-go
 

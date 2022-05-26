@@ -1,4 +1,4 @@
-package io.puppylpg.pokemon.pikachu;
+package io.puppylpg.autoconfig.pikachu;
 
 import io.puppylpg.pokemon.pikachu.entity.Pikachu;
 import io.puppylpg.pokemon.pikachu.entity.Pokemon;

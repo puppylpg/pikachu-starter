@@ -1,4 +1,4 @@
-package io.puppylpg.pokemon.pikachu;
+package io.puppylpg.autoconfig.pikachu;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

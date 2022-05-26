@@ -1,6 +1,8 @@
 [toc]
 
-该工程是一个module聚合工程，但不是这些module的parent。每个module都是一个独立的子工程。
+该工程是一个module聚合工程，**但不是这些module的parent**。每个module都是一个独立的子工程。
+
+spring boot autoconfig机制：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.auto-configuration
 
 # pikachu-entity
 定义Pokemon和Pikachu实体类。
@@ -16,17 +18,37 @@
 NOTE：该工程引入的pikachu-entity依赖，应该设为optional=true，否则项目引入该autoconfig包就相当于引入了pikachu-entity，
 那么@ConditionalOnClass一定为true。不能让pikachu-entity包传递。
 
+> springboot官方的[spring-boot-autoconfigure](https://github.com/spring-projects/spring-boot/blob/v2.7.0/spring-boot-project/spring-boot-autoconfigure/build.gradle)里全是optional。
+
+生成IDE属性配置提示`META-INF/spring-configuration-metadata.json`：
+- https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#appendix.configuration-metadata.annotation-processor
+
+`META-INF/spring-autoconfigure-metadata.properties`。If that file is present, it is used to eagerly filter auto-configurations that do not match, which will improve startup time.：
+- https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-auto-configuration.custom-starter.autoconfigure-module
+
+**测试autoconfig**：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-auto-configuration.testing
+
 # pikachu-spring-boot-starter
 1. pikachu-spring-boot-autoconfig；
-2. 加上一些依赖（提供 "启动" 某个特性所需的所有依赖项）。
+2. **pikachu-entity**；
+3. 加上一些其他依赖（提供 "启动" 某个特性所需的所有依赖项）。
 
-当然，如果把autoconfig和依赖一起扔在starter里也没问题，只不过拆开更符合spring boot传统。
+总之，引用了starter，啥都不用再额外引入（除了配置properties），就能使用这个库了：In a nutshell, adding the starter should provide everything needed to start using that library
+
+> 当然，如果把autoconfig和依赖一起扔在starter里也没问题，只不过拆开更符合spring boot传统。
+
+> This separation in two modules is in no way necessary. If "acme" has several flavors, options or optional features, then it is better to separate the auto-configuration as you can clearly express the fact some features are optional. Besides, you have the ability to craft a starter that provides an opinion about those optional dependencies. At the same time, others can rely only on the autoconfigure module and craft their own starter with different opinions.
 
 - https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-auto-configuration.custom-starter
 
-该工程可以再分离一下，搞一个单独的pikachu包，完成Pokemon的实现类pikachu的功能，
-然后starter工程引入该包，starter工程只做starter的那些auto config的事情。
-不过鉴于两个包的内容都不多，干脆合成一个了。
+> The starter is really an empty jar. Its only purpose is to provide the necessary dependencies to work with the library. You can think of it as an opinionated view of what is required to get started.
+
+比如[spring-boot-starter-data-elasticsearch](https://github.com/spring-projects/spring-boot/blob/v2.7.0/spring-boot-project/spring-boot-starters/spring-boot-starter-data-elasticsearch/build.gradle)依赖[spring-boot-autoconfigure](https://github.com/spring-projects/spring-boot/blob/v2.7.0/spring-boot-project/spring-boot-autoconfigure/build.gradle)里和elasticsearch相关的auto config类，
+但是后者在[spring-boot-starter](https://github.com/spring-projects/spring-boot/blob/v2.7.0/spring-boot-project/spring-boot-starters/spring-boot-starter/build.gradle)中，所以spring官方的所有xxx-starter都包含spring-boot-starter这个基础的starter：
+> Either way, your starter must reference the core Spring Boot starter (spring-boot-starter) directly or indirectly (there is no need to add it if your starter relies on another starter). If a project is created with only your custom starter, Spring Boot’s core features will be honoured by the presence of the core starter.
+
+配置名称不要使用spring boot用了的（server，spring，management等），最好用自己开头的，比如以`pokemon.pikachu`开头：
+- https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-auto-configuration.custom-starter.configuration-keys
 
 # pikachu-starter-demo
 一个引入pikachu-spring-boot-starter的web示例工程。

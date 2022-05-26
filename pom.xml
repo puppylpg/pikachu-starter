@@ -5,15 +5,16 @@
 
     <groupId>io.puppylpg.pokemon</groupId>
     <artifactId>pikachu-starter</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
+        <module>pikachu-entity</module>
         <module>pikachu-spring-boot-autoconfig</module>
         <module>pikachu-spring-boot-starter</module>
-        <module>pikachu-starter-demo</module>
-        <module>pikachu-starter-demo2</module>
-        <module>pikachu-entity</module>
+        <module>pikachu-starter-demo-use-autoconfig</module>
+        <module>pikachu-starter-demo-use-manual-config</module>
+        <module>pikachu-starter-demo-forbid-autoconfig</module>
     </modules>
 
     <name>pikachu-starter</name>
@@ -21,19 +22,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
+<!--        <spring-boot.version>2.2.4.RELEASE</spring-boot.version>-->
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
 </project>

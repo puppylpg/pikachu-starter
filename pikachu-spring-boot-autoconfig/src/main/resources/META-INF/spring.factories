@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.puppylpg.pokemon.pikachu.PikachuAutoConfig
+  io.puppylpg.autoconfig.pikachu.PikachuAutoConfig

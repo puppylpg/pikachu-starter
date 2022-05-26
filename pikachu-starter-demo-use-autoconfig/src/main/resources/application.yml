@@ -5,7 +5,7 @@ pokemon:
   pikachu:
     name: pika
     height: 63
-    girl-friend:
-      name: qiqi
+    girlfriend:
+      name: auto-bibi
       interest: hiking
 
