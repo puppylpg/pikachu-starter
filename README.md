@@ -10,8 +10,6 @@ spring boot autoconfig机制：https://docs.spring.io/spring-boot/docs/current/r
 **该工程在autoconfig包里务必要作为optional=true引入**。
 
 # pikachu-spring-boot-autoconfig
-自动配置。只要引入该starter，在使用Pokemon时，
-如果不手动new Pokemon的实现，就会自动搞出来一只pikachu。
 
 - https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-auto-configuration
 
@@ -28,7 +26,12 @@ NOTE：该工程引入的pikachu-entity依赖，应该设为optional=true，否�
 
 **测试autoconfig**：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-auto-configuration.testing
 
+spring.factories是spring boot的入口：**META-INF/spring.factories配置xxxAutoConfiguration类，激活它的context配置；它的`@EnableConfigurationProperties`激活它的properties配置类的context**。
+
 # pikachu-spring-boot-starter
+自动配置。只要引入该starter，在使用Pokemon时，
+如果不手动new Pokemon的实现，就会自动搞出来一只pikachu。
+
 1. pikachu-spring-boot-autoconfig；
 2. **pikachu-entity**；
 3. 加上一些其他依赖（提供 "启动" 某个特性所需的所有依赖项）。
