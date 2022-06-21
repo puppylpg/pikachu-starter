@@ -8,4 +8,5 @@ pokemon:
     girlfriend:
       interest: hiking
       name: forbid-go
+    enabled: true
 

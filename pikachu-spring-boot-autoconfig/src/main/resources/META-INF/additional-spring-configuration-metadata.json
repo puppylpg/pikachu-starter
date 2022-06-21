@@ -1,0 +1,11 @@
+{
+  "properties": [
+    {
+      "name": "pokemon.pikachu.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用pikachu自动配置",
+      "sourceType": "io.puppylpg.autoconfig.pikachu.PikachuProperties",
+      "defaultValue": false
+    }
+  ]
+}

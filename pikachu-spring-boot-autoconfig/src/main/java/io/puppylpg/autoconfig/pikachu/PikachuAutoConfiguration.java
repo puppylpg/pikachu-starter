@@ -4,6 +4,7 @@ import io.puppylpg.pokemon.pikachu.entity.Pikachu;
 import io.puppylpg.pokemon.pikachu.entity.Pokemon;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +12,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass(Pikachu.class)
 @EnableConfigurationProperties(PikachuProperties.class)
-public class PikachuAutoConfig {
+@ConditionalOnProperty(prefix = PikachuProperties.PIKACHU_PREFIX, value = "enabled", havingValue = "true")
+public class PikachuAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(Pokemon.class)
-    public Pikachu getPikachu(PikachuProperties properties) {
+    public Pikachu pikachu(PikachuProperties properties) {
         Pikachu pikachu =  new Pikachu(properties.getName(), properties.getHeight());
 
         if (properties.getGirlFriend() != null) {

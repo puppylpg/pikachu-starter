@@ -3,6 +3,7 @@ server:
 
 pokemon:
   pikachu:
+    enabled: true
     name: pika
     height: 63
     girlfriend:

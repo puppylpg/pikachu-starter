@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
+@Data
 public class Pikachu implements Pokemon {
 
     public Pikachu(String name, int height) {
@@ -19,7 +20,6 @@ public class Pikachu implements Pokemon {
 
     private int height;
 
-    @Setter
     public GirlFriend girlFriend;
 
     @Data

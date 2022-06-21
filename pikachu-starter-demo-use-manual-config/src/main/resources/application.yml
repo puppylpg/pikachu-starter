@@ -1,6 +1,7 @@
 server:
   port: 8080
 
+# 配置了也没用，config了new了一个pikachu
 pokemon:
   pikachu:
     name: pika
@@ -8,4 +9,7 @@ pokemon:
     girl-friend:
       name: unused
       interest: hiking
-
+    enabled: true
+logging:
+  level:
+    root: debug

@@ -3,6 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.0</version>
+    </parent>
+
     <groupId>io.puppylpg.pokemon</groupId>
     <artifactId>pikachu-starter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -19,10 +25,5 @@
 
     <name>pikachu-starter</name>
     <description>Spring boot starter pikachu aggregator project.</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-<!--        <spring-boot.version>2.2.4.RELEASE</spring-boot.version>-->
-    </properties>
 
 </project>

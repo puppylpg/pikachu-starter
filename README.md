@@ -24,6 +24,10 @@ NOTE：该工程引入的pikachu-entity依赖，应该设为optional=true，否�
 `META-INF/spring-autoconfigure-metadata.properties`。If that file is present, it is used to eagerly filter auto-configurations that do not match, which will improve startup time.：
 - https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-auto-configuration.custom-starter.autoconfigure-module
 
+如果有一些非`@ConfigurationProperties`绑定的properties也想有IDE提示（比如`@ConditionalOnProperties`），可以增加一个文件`META-INF/additional-spring-configuration-metadata.json`，
+格式和`META-INF/spring-configuration-metadata.json`一致，springboot编译的时候会把前者的内容merge到后者里，使前者指定的properties也能有提示：
+- https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html#appendix.configuration-metadata.annotation-processor.adding-additional-metadata
+
 **测试autoconfig**：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-auto-configuration.testing
 
 spring.factories是spring boot的入口：**META-INF/spring.factories配置xxxAutoConfiguration类，激活它的context配置；它的`@EnableConfigurationProperties`激活它的properties配置类的context**。
